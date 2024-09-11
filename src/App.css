@@ -1,0 +1,36 @@
+.navbar {
+  background-color: blue;
+  padding: 20px;
+  margin-bottom: 10px;
+  margin-top: -15px;
+  margin-left: -10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.vertical {
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.horizontal {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.active {
+  background-color: darkblue;
+  padding: 5px;
+  border-radius: 10px;
+}

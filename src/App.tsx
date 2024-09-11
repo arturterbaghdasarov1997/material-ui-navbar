@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
+import Router from './router/Router';
 
 const App:React.FC = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+      {/* <Navbar routes={routes} /> */}
+      <Router />
+    </>
   );
 }
 
