@@ -1,9 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { IAuth } from '../interfaces/auth.interfaces';
+import AuthForm from '../components/forms/AuthForm';
 
 const Login:React.FC = () => {
-  return (
-    <div>Login</div>
-  )
+  const onSubmit = (formData: IAuth) => {
+    console.log(formData)
+  }
+
+  return <AuthForm type='login' onSubmit={onSubmit} />
 }
 
 export default Login;
