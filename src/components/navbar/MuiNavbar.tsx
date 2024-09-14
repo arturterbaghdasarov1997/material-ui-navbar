@@ -12,17 +12,18 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import { IRoute } from '../router/routes';
+import { IRoute } from '../../router/routes';
 import { Outlet, useNavigate } from 'react-router-dom';
+import AuthButtons from './AuthButtons';
 
 const settings = ['Profile', 'Logout'];
 
 interface MuiNavbarProps {
   routes: IRoute[];
-  isVertical: boolean;
 }
 
-const MuiNavbar: React.FC<MuiNavbarProps> = ({ routes, isVertical }) => {
+const MuiNavbar: React.FC<MuiNavbarProps> = ({ routes }) => {
+  const auth = {token:false}
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -49,19 +50,6 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ routes, isVertical }) => {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-            {isVertical ? (
-              <Box sx={{ display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                {routes.map(({ path, label }) => (
-                  <Button
-                    key={path}
-                    onClick={() => handleCloseNavMenu(path)}
-                    sx={{ my: 1, color: 'white', display: 'flex', textAlign: 'left', flexDirection: 'center' }}
-                  >
-                    {label}
-                  </Button>
-                ))}
-              </Box>
-            ) : (
               <>
                 <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                   <IconButton
@@ -109,9 +97,8 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ routes, isVertical }) => {
                   ))}
                 </Box>
               </>
-            )}
 
-            <Box sx={{ flexGrow: 0 }}>
+            { auth.token ? <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -139,7 +126,7 @@ const MuiNavbar: React.FC<MuiNavbarProps> = ({ routes, isVertical }) => {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
+            </Box> : <AuthButtons/>}
           </Toolbar>
         </Container>
       </AppBar>
