@@ -1,6 +1,6 @@
 import { Button, TextField, Typography } from '@mui/material';
 import React, { FormEvent, useState } from 'react'
-import { IAuth } from '../../interfaces/auth.interfaces';
+import { IAuth } from '../../interfaces/auth.interface';
 
 interface AuthFormProps {
     type: string,
@@ -20,10 +20,10 @@ const AuthForm:React.FC<AuthFormProps> = ({type, onSubmit}) => {
 
   return (
     <form onSubmit={handleSubmit} style={{width: '500px', margin: '50px auto', display: 'flex', flexDirection: 'column'}}>
-        <Typography style={{marginBottom: '10px'}}>{type === 'login' ? 'Login' : 'Register'}</Typography>
+        <Typography style={{marginBottom: '10px', alignSelf: 'center', fontWeight: 'bold'}} variant='h3'>{type === 'login' ? 'Login' : 'Register'}</Typography>
 
         <TextField
-            style={{marginBottom: '5px'}}
+            style={{marginBottom: '15px'}}
             label='Email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
